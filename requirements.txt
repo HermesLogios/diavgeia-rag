@@ -16,3 +16,5 @@ fastapi[standard]>=0.115
 # Λήψη δεδομένων & ρυθμίσεις
 requests>=2.32
 python-dotenv>=1.0
+# Δοκιμές
+pytest>=8.0
