@@ -1,0 +1,9 @@
+cd ~\Documents\diavgeia-rag
+
+.\.venv\Scripts\Activate.ps1
+
+docker compose up -d
+
+docker ps
+
+docker compose exec db psql -U rag -d diavgeia -P pager=off -c "SELECT count(*) AS decisions, (SELECT count(embedding) FROM chunks) AS embeddings FROM decisions;"

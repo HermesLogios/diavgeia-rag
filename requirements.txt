@@ -1,0 +1,18 @@
+# Βάση δεδομένων
+psycopg[binary]>=3.2
+pgvector>=0.3
+
+# Embeddings (τοπικά, CPU)
+sentence-transformers>=3.0
+torch>=2.4          # εγκατάσταση CPU: pip install torch --index-url https://download.pytorch.org/whl/cpu
+numpy>=1.26
+
+# LLM API (DeepSeek μέσω OpenAI-compatible SDK)
+openai>=1.50
+
+# Web API
+fastapi[standard]>=0.115
+
+# Λήψη δεδομένων & ρυθμίσεις
+requests>=2.32
+python-dotenv>=1.0

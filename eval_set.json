@@ -1,0 +1,136 @@
+[
+  {
+    "id": "fuel-01",
+    "question": "προμήθεια καυσίμων για τα οχήματα του δήμου",
+    "category": "retrieval",
+    "expected_adas": ["ΨΤ1ΜΩ1Ρ-ΙΕΓ"],
+    "should_refuse": false,
+    "note": "παράφραση οχήματα/μεταφορικά μέσα"
+  },
+  {
+    "id": "schools-01",
+    "question": "συντήρηση σχολικών κτιρίων",
+    "category": "retrieval",
+    "expected_adas": ["9Γ76Ω1Ρ-ΠΑ0"],
+    "should_refuse": false,
+    "note": "το dense το χάνει, το BM25 το βρίσκει"
+  },
+  {
+    "id": "spelling-01",
+    "question": "συντηρήσεις σχολικών κτηρίων μνημείων",
+    "category": "hard",
+    "expected_adas": ["9ΡΨΔΩ1Ρ-34Ξ"],
+    "should_refuse": false,
+    "note": "ΚΤΗΡΙΟ vs ΚΤΙΡΙΟ — διαφορετικά lexemes"
+  },
+  {
+    "id": "waste-01",
+    "question": "τι αγόρασε ο δήμος για τα σκουπίδια",
+    "category": "paraphrase",
+    "expected_adas": ["6ΔΜ2Ω1Ρ-4Φ6"],
+    "should_refuse": false,
+    "note": "σκουπίδια/απορρίμματα — μηδενική λεξιλογική επικάλυψη"
+  },
+  {
+    "id": "waste-02",
+    "question": "προμήθεια κάδων απορριμμάτων",
+    "category": "retrieval",
+    "expected_adas": ["9Π6ΧΩ1Ρ-Φ62"],
+    "should_refuse": false
+  },
+  {
+    "id": "cemetery-01",
+    "question": "προμήθεια οστεοθυρίδων για τα κοιμητήρια",
+    "category": "retrieval",
+    "expected_adas": ["Ψ0ΒΟΩ1Ρ-6ΣΣ", "ΨΡΞ8Ω1Ρ-46Χ", "6ΧΞΡΩ1Ρ-ΟΞΡ", "9ΡΠΧΩ1Ρ-Σ5Ο", "63ΧΔΩ1Ρ-ΝΒΟ"],
+    "should_refuse": false,
+    "note": "πολλαπλοί έγκυροι ΑΔΑ από SQL — αρκεί ένας"
+  },
+  {
+    "id": "tariff-01",
+    "question": "αποφάσεις για την τιμολογιακή πολιτική της ΔΕΥΑΡ",
+    "category": "retrieval",
+    "expected_adas": ["ΨΥ73Ω1Ρ-Α7Τ", "ΨΦ4ΚΩ1Ρ-Ξ1Η"],
+    "should_refuse": false,
+    "note": "ξαναγράφτηκε — η αρχική ερώτηση ζητούσε τιμές που δεν υπάρχουν στα θέματα"
+  },
+  {
+    "id": "person-01",
+    "question": "μετάταξη υπαλλήλου Ιωάννη Λέντη",
+    "category": "hard",
+    "expected_adas": ["6ΑΙΙΩ1Ρ-ΡΓΑ"],
+    "should_refuse": false,
+    "note": "κύριο όνομα — μόνο το BM25 μπορεί"
+  },
+  {
+    "id": "mayor-01",
+    "question": "ποιος είναι ο δήμαρχος Ρόδου",
+    "category": "entity",
+    "expected_adas": ["ΡΨΗΗΩ1Ρ-ΒΡ0"],
+    "should_refuse": false,
+    "note": "ο agent το απαντούσε από training data χωρίς κλήση εργαλείου"
+  },
+  {
+    "id": "windows-01",
+    "question": "αντικατάσταση κουφωμάτων σε σχολεία",
+    "category": "retrieval",
+    "expected_adas": ["ΨΧ7ΕΩ1Ρ-Τ1Λ"],
+    "should_refuse": false
+  },
+  {
+    "id": "ada-01",
+    "question": "ΨΤ1ΜΩ1Ρ-ΙΕΓ",
+    "category": "routing",
+    "expected_adas": ["ΨΤ1ΜΩ1Ρ-ΙΕΓ"],
+    "should_refuse": false
+  },
+  {
+    "id": "agg-01",
+    "question": "πόσα ξόδεψε συνολικά ο δήμος για καύσιμα",
+    "category": "aggregation",
+    "expected_adas": [],
+    "should_refuse": false,
+    "expected_contains": ["8.358.476", "8358476", "8,36", "8.36"],
+    "note": "το RAG δεν μπορεί — χρειάζεται SQL tool"
+  },
+  {
+    "id": "agg-02",
+    "question": "πόσες αποφάσεις εξέδωσε ο δήμος το 2025",
+    "category": "aggregation",
+    "expected_adas": [],
+    "should_refuse": false,
+    "expected_contains": ["10.670", "10670"],
+    "note": "καθαρό COUNT αποφάσεων — το plithos ΕΙΝΑΙ η απάντηση"
+  },
+  {
+    "id": "compare-01",
+    "question": "ποια απόφαση για απορριμματοφόρα είχε το μεγαλύτερο ποσό",
+    "category": "aggregation",
+    "expected_adas": ["6ΧΡ9Ω1Ρ-ΤΗΑ"],
+    "should_refuse": false,
+    "expected_contains": ["359.104", "359104"],
+    "note": "ground truth διορθώθηκε από SQL"
+  },
+  {
+    "id": "refuse-01",
+    "question": "ποιος κέρδισε το Champions League το 2024",
+    "category": "refusal",
+    "expected_adas": [],
+    "should_refuse": true
+  },
+  {
+    "id": "refuse-02",
+    "question": "πόσους κατοίκους έχει η Ρόδος",
+    "category": "refusal",
+    "expected_adas": [],
+    "should_refuse": true
+  },
+  {
+    "id": "refuse-03",
+    "question": "πόσους μόνιμους υπαλλήλους απασχολεί ο δήμος Ρόδου",
+    "category": "refusal",
+    "expected_adas": [],
+    "should_refuse": true,
+    "note": "παγίδα — διαφορετική μονάδα μέτρησης: άνθρωποι, όχι αποφάσεις"
+  }
+]
