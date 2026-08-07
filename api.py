@@ -4,6 +4,7 @@ from typing import Literal, Optional
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 import agent
@@ -81,7 +82,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],          # για ανάπτυξη· σε production βάλε το domain σου
+    allow_origins=["*"],
     allow_credentials=False,
     allow_methods=["GET", "POST"],
     allow_headers=["*"],
@@ -164,3 +165,9 @@ def ask_endpoint(req: AskRequest):
 
     except Exception as exc:
         raise HTTPException(status_code=500, detail=f"Σφάλμα επεξεργασίας: {exc}")
+
+
+# ─── Στατικά αρχεία ──────────────────────────────────
+# ΠΑΝΤΑ τελευταίο: το mount στο "/" σκιάζει ό,τι δηλωθεί μετά από αυτό.
+
+app.mount("/", StaticFiles(directory="static", html=True), name="static")
